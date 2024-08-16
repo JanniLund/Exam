@@ -43,25 +43,26 @@ def evaluate_performance(data):
         peerRating = 'Excellent'
     
     totalRating = [salesRating, customerRating, attendanceRating, peerRating]
+    print(totalRating)
 
     # Overall performance 
     if totalRating.count('Excellent') == 4: 
         overallRating = 'Outstanding'
-    elif totalRating.count('Poor') == 2:  
+    elif totalRating.count('Poor') >= 2:  
         overallRating = 'Needs Improvement'
-    elif totalRating.count('Good' or 'Excellent') == 3:
+    elif totalRating.count('Good') + totalRating.count('Excellent') >= 3: # Because it was Good or better
         overallRating = 'Strong Performer'
     else:
         overallRating = 'Satisfactory'
     return overallRating
 
-
-data = {}
+# Not all employees will have the same, so here the HR department can enter the information from the individual employee:
 print(f'{"-"*30}\nThis is a evaluating program for performance rating of our employees! How was the employee performance:\n{"-"*30}')
-sales = int(input('Sales Target Achievement:\n1. Less than 80%\n2. 80% to 100%\n3. 100% to 120%\n4. Above 120%\nEnter: >'))
-customer = int(input('Customer Satisfaction Score:\n1. Less than 6\n2. 6 to 7\n3. 8 to 9\n4. 10\nEnter: >'))
-attendance = int(input('Attendance Record:\n1. Less than 20 days\n2. 20 to 24 days\n3. 25 to 27 days\n4. 28 and more days\nEnter: >'))
-peer = int(input('Peer Feedback Score:\n1. Less than 4\n2. 4 to 6\n3. 7 to 8\n4. 9 to 10\nEnter: >'))
+sales = int(input('Sales Target Achievement:\nEnter: >'))
+customer = int(input('Customer Satisfaction Score:\nEnter: >'))
+attendance = int(input('Attendance Record:\nEnter: >'))
+peer = int(input('Peer Feedback Score:\nEnter: >'))
+# The dictionary with the information of the employee:
 data = {
     'salesTarget': sales, 
     'CustomerSatisfaction': customer, 
