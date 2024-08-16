@@ -74,6 +74,42 @@ data = {
 overallRating = evaluate_performance(data)
 print(f"{'-'*30}\nThe employee's overall performance in the month has been: {overallRating}\n{'-'*30}")
 
+# b) Employee Bonus Calculator (15%)
+# Function that calculates the bonus of the employee
+def calculate_bonus(data):
+    rating = data['performanceRating']
+    if rating == "Outstanding":
+        ratingBonus = 1000
+    elif rating == "Strong Performer":
+        ratingBonus = 800
+    elif rating == "Satisfactory":
+        ratingBonus = 500
+    else:
+        ratingBonus = 200
+    
+    yearsOfService = data['yearsOfService']
+    if yearsOfService < 2:
+        yearsBonus = ratingBonus * 1
+    elif yearsOfService < 6:
+        yearsBonus = ratingBonus * 1.5
+    else:
+        yearsBonus = ratingBonus * 2
+
+    totalBonus = yearsBonus
+    return totalBonus
+
+# Ask for follow-up information and add the information to our data dictionary 
+print(f'{"-"*30}\n Bonus calculations for the employee! Follow-up questions:\n{"-"*30}')
+performanceR = overallRating
+years = int(input('Years of Service: '))
+data['performanceRating'] = performanceR 
+data['yearsOfService'] = years 
+
+# Main - call the functions and output the rating result
+totalBonus = calculate_bonus(data)
+print(f'\nResult of bonus calculations for the employee:\n {"-"*50}\n With {years} and a {performanceR} performance Rate. The total Bonus is: is: ${totalBonus}!')
+
+
 
 
 
